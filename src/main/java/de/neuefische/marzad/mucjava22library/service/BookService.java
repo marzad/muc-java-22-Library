@@ -19,7 +19,17 @@ public class BookService {
         return bookRepo.getAllBooks();
     }
 
-    public Book addBook(Book book){
+    public static Book addBook(Book book){
         return bookRepo.addBook(book);
     }
+
+    public static Book getBookByISBN(String isbn){
+        return bookRepo.getBookByISBN(isbn);
+    }
+
+    public static boolean deleteBook(String isbn){
+        return bookRepo.deleteBook(isbn);
+    }
+
+
 }

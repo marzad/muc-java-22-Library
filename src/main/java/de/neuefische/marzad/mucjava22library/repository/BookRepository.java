@@ -23,5 +23,26 @@ public class BookRepository {
         return book;
     }
 
+    public Book getBookByISBN(String isbn){
+        Book result = null;
+        for(Book book: books){
+            if(book.isbn().equals(isbn)){
+                result = book;
+            }
+        }
+        return result;
+    }
+
+    public boolean deleteBook(String isbn){
+        try{
+            Book book = this.getBookByISBN(isbn);
+            books.remove(book);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+
 
 }

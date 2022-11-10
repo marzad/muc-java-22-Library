@@ -21,9 +21,24 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
-    @PostMapping
+/*    @PostMapping
     public Book addBook(@RequestBody Book book){
         return bookService.addBook(book);
+    }*/
+
+    @PutMapping("/{isbn}")
+    public Book addBook(@PathVariable String isbn){
+        return bookService.addBook(new Book(isbn, "",""));
+    }
+
+    @GetMapping("/{isbn}")
+    public Book getBookByISBN(@PathVariable String isbn){
+        return bookService.getBookByISBN(isbn);
+    }
+
+    @DeleteMapping("/{isbn}")
+    public boolean deleteBook(@PathVariable String isbn){
+        return bookService.deleteBook(isbn);
     }
 
 

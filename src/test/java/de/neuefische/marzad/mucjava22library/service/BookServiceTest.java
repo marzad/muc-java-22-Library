@@ -33,4 +33,49 @@ class BookServiceTest {
 
     }
 
+    @Test
+    public void test_getBookByISBN(){
+        Book book = new Book("0345391802", "","");
+
+        when(BookService.getBookByISBN("0345391802")).thenReturn(book);
+
+        Book expected = bookRepository.getBookByISBN("0345391802");
+        Book result = new Book("0345391802", "","");
+
+        verify(bookRepository).getBookByISBN("0345391802");
+
+        assertEquals(expected, result);
+
+    }
+
+    @Test
+    public void test_addBook(){
+        Book book = new Book("0345391802", "","");
+
+        when(BookService.addBook(book)).thenReturn(book);
+
+        Book expected = bookRepository.addBook(book);
+        Book result = new Book("0345391802", "","");
+
+        verify(bookRepository).addBook(book);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void test_deleteBook(){
+        Book book = new Book("0345391802", "","");
+
+        when(BookService.deleteBook("0345391802")).thenReturn(true);
+
+        boolean expected = bookRepository.deleteBook("0345391802");
+
+        verify(bookRepository).deleteBook("0345391802");
+
+       assertTrue(expected);
+    }
+
+
+
+
 }
