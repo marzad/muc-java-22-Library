@@ -28,7 +28,7 @@ public class BookController {
 
     @PutMapping("/{isbn}")
     public Book addBook(@PathVariable String isbn){
-        return bookService.addBook(new Book(isbn, "",""));
+        return bookService.addBook(new Book(isbn, "","", null));
     }
 
     @GetMapping("/{isbn}")

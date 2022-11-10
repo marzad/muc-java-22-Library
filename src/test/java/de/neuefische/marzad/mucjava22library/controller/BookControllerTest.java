@@ -1,6 +1,7 @@
 package de.neuefische.marzad.mucjava22library.controller;
 
 import de.neuefische.marzad.mucjava22library.model.Book;
+import de.neuefische.marzad.mucjava22library.model.BookType;
 import de.neuefische.marzad.mucjava22library.repository.BookRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ class BookControllerTest {
     @Test
     void getAllBooksTest() throws Exception {
 
-        Book book = new Book("123", "me", "Java");
+        Book book = new Book("123", "me", "Java", BookType.E_BOOK);
         bookRepository.addBook(book);
 
         mockMvc.perform(get("/books"))
@@ -45,7 +46,7 @@ class BookControllerTest {
     @Test
     void addBookTest() throws Exception{
 
-        Book book = new Book("123", "me", "Java");
+        Book book = new Book("123", "me", "Java", BookType.E_BOOK);
         bookRepository.addBook(book);
 
         mockMvc.perform(put("/books")
@@ -63,7 +64,7 @@ class BookControllerTest {
 
     @Test
     void getBookByISBNTest() throws Exception{
-        Book book = new Book("0345391802", "", "");
+        Book book = new Book("0345391802", "", "", BookType.E_BOOK);
         bookRepository.addBook(book);
 
         mockMvc.perform(get("/books")
@@ -80,7 +81,7 @@ class BookControllerTest {
     }
     @Test
     void deleteBookTest() throws Exception{
-        Book book = new Book("0345391802", "", "");
+        Book book = new Book("0345391802", "", "", null);
         bookRepository.addBook(book);
         String isbn ="0345391802";
 
@@ -98,8 +99,5 @@ class BookControllerTest {
 
 
     }
-
-
-
 }
 

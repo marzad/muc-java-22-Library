@@ -1,6 +1,7 @@
 package de.neuefische.marzad.mucjava22library.service;
 
 import de.neuefische.marzad.mucjava22library.model.Book;
+import de.neuefische.marzad.mucjava22library.model.BookType;
 import de.neuefische.marzad.mucjava22library.repository.BookRepository;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +19,7 @@ class BookServiceTest {
     @Test
     public void test_getAllBooks(){
         List<Book> books = new ArrayList<>();
-        Book book = new Book("123", "Me", "Java");
+        Book book = new Book("123", "Me", "Java", BookType.E_BOOK);
         books.add(book);
 
         when(BookService.getAllBooks()).thenReturn(books);
@@ -35,12 +36,12 @@ class BookServiceTest {
 
     @Test
     public void test_getBookByISBN(){
-        Book book = new Book("0345391802", "","");
+        Book book = new Book("0345391802", "","", null);
 
         when(BookService.getBookByISBN("0345391802")).thenReturn(book);
 
         Book expected = bookRepository.getBookByISBN("0345391802");
-        Book result = new Book("0345391802", "","");
+        Book result = new Book("0345391802", "","", null);
 
         verify(bookRepository).getBookByISBN("0345391802");
 
@@ -50,12 +51,12 @@ class BookServiceTest {
 
     @Test
     public void test_addBook(){
-        Book book = new Book("0345391802", "","");
+        Book book = new Book("0345391802", "","", null);
 
         when(BookService.addBook(book)).thenReturn(book);
 
         Book expected = bookRepository.addBook(book);
-        Book result = new Book("0345391802", "","");
+        Book result = new Book("0345391802", "","", null);
 
         verify(bookRepository).addBook(book);
 
@@ -64,7 +65,7 @@ class BookServiceTest {
 
     @Test
     public void test_deleteBook(){
-        Book book = new Book("0345391802", "","");
+        Book book = new Book("0345391802", "","", null);
 
         when(BookService.deleteBook("0345391802")).thenReturn(true);
 
