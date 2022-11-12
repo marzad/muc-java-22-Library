@@ -4,6 +4,7 @@ package de.neuefische.marzad.mucjava22library.controller;
 import de.neuefische.marzad.mucjava22library.model.Book;
 import de.neuefische.marzad.mucjava22library.service.BookService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
@@ -41,6 +42,6 @@ public class BookController {
         return bookService.deleteBook(isbn);
     }
 
-
+    WebClient webClient = WebClient.create("");
 
 }
